@@ -13,25 +13,24 @@ int_printf(const char *format, ...)
 	int y, printed = 0, printed_chars = 0;
 	int flags, width, preceision, size, buff_ind = 0;
 	va_list list;
-	char buffer[BUFF-SIZE];
+	char buffer[BUFF - SIZE];
 
-	if(format==NULL)
+	if (format == NULL)
 		return (-1);
 	va_start(list, format);
-	for (y=0; format && format[y] != '\0': y++)
-	
+	for (y = 0; format && format[y] != '\0' : y++)
 	{
 		if (format[y] != '%')
 		{
-			buffer[buff_ind++] = format[i];
+			buffer[buff_ind++] = format[y];
 			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer,&buff_ind);
-			//write(1, &format[y], 1);//
-			printed_chars ++;
+				print_buffer(buffer, &buff_ind);
+			/*write(1, &format[y], 1);*/
+			printed_chars++;
 		}
 		else
 		{
-			print_buffer(buffer,&buff_ind);
+			print_buffer(buffer, &buff_ind);
 			flags = parse_flags(format, &y);
 			width = width_calculation(format, &y, list);
 			precision = parse_precision(format, &y, list);
@@ -55,6 +54,6 @@ int_printf(const char *format, ...)
 void print_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
-		write(1, & buffer [0] *buff_ind);
+		write(1, &buffer[0] * buff_ind);
 	*buff_ind = 0;
 }
