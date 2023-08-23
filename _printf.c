@@ -1,5 +1,5 @@
 #include "main.h"
-void print_buffer(char buffet[], int *buff_ind);
+void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - printing function
